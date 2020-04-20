@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>Flying Coin</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+
+
+
+
+
+<style>
+
+    /*========================== FLAYING COIN  ============================== */
+    .flyingCoin{
+        position:absolute;
+        width:65px;
+        height:65px;
+        -webkit-animation:1s animateOpacity;
+        background-image: url("images/FlyingCoin.png");
+        background-repeat: no-repeat;
+        background-position: center; 
+        background-size: cover;
+    }
+    
+    @-webkit-keyframes animateOpacity {
+        from {opacity: 0;}
+        5% {opacity: 0.6;}
+        50% {opacity: 1;}
+        95% {opacity: 0.6;}
+        to {opacity: 0;}
+    }
+    
+    
+    
+    
+    
+    
+    /*========================== STACK  ============================== */
+    .stackContainer {
+        width:300px;
+        height:200px;
+        line-height:0px;
+        text-align:center;
+    
+    
+        background-image: url("images/Hand.jpg");
+        background-repeat: no-repeat;
+        background-position: center; 
+        background-size: cover;
+    }
+    
+    .stackContainerCoinsTable{
+        margin-left:10px;
+    }
+    
+    .stackContainerCoinsTD{
+        height:90px;
+        padding-left:5px;
+    }
+    
+    .stackContainerCoins{
+        /*display: inline-block;*/
+        width:48px;
+        height:auto;
+        line-height:0px;
+    }
+    
+    
+    
+    
+    
+    
+    
+    /*========================== HEAP  ============================== */
+    .heapContainer {
+        
+        width:335px;
+        height:200px;
+        line-height:0px;
+        text-align:center;
+        padding-left:35px;
+    
+    
+    
+        background-image: url("images/Bowl.png");
+        background-repeat: no-repeat;
+        background-position: center; 
+        background-size: cover;
+    }
+    
+    .heapContainerCoinsTable{
+        margin-left:10px;
+    }
+    
+    .heapContainerCoinsTD{
+        height:120px;
+        padding-left:5px;
+    }
+    
+    .heapContainerCoins{
+        /*display: block;*/
+        width:48px;
+        height:auto;
+        line-height:0px;
+    }
+    
+    
+    
+    
+    
+    
+    /* =========================  MISC  ================================*/
+    .coinImageProfile{
+        margin:0;
+        padding:0;
+        line-height:0px;
+    }
+    
+    
+    .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Opera and Firefox */
+    }
+    
+</style>
+
+
+</head>
+<body>
+
+    <div align="center" class="container">
+        
+        <div style="text-align: center;">
+            <br>
+            <span style="font-size:24px;">I Take:</span><strong><span style="font-size:24px;"> &nbsp;<span style="font-size:30px;">$<span id="userCoinAmountText">0</span></span></span></strong>
+        </div>
+        
+        
+        <div style="text-align: center;">for the second listening task</div>
+        
+        
+        <br>
+            
+        <table>
+            
+            <tr>
+                <td align="center" style="">
+                    <input type="button" class="btnAdd btn btn-primary" value="Add" />
+                </td>
+                <td width="100%" align="center"></td>
+                <td align="center" style="">
+                    <input type="button" class="btnRemove btn btn-success" value="Remove" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="heapContainer noselect" >
+                        <table class="heapContainerCoinsTable">
+                            <tr>
+                                <td valign="bottom" class="heapContainerCoinsTD"><div id="heapCoins4" class="heapContainerCoins"></div></td>
+                                <td valign="bottom" class="heapContainerCoinsTD"><div id="heapCoins3" class="heapContainerCoins"></div></td>
+                                <td valign="bottom" class="heapContainerCoinsTD"><div id="heapCoins2" class="heapContainerCoins"></div></td>
+                                <td valign="bottom" class="heapContainerCoinsTD"><div id="heapCoins1" class="heapContainerCoins"></div></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td width=""></td>
+                <td>
+                    <div class="stackContainer noselect" >
+    
+                        <table class="stackContainerCoinsTable">
+                            <tr>
+                                <td valign="bottom" class="stackContainerCoinsTD"><div id="stackCoins1" class="stackContainerCoins"></div></td>
+                                <td valign="bottom" class="stackContainerCoinsTD"><div id="stackCoins2" class="stackContainerCoins"></div></td>
+                                <td valign="bottom" class="stackContainerCoinsTD"><div id="stackCoins3" class="stackContainerCoins"></div></td>
+                                <td valign="bottom" class="stackContainerCoinsTD"><div id="stackCoins4" class="stackContainerCoins"></div></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+        <div>
+            <br><br><br>
+            // ################################################# <br>
+            // CHANGE JAVASCRIPT OFFSET TO POSITION IF NOT WORKING !!!!! <br>
+            // ################################################# <br>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+        
+
+    // Coin column amount
+    // Clolumn 1: 5 coins
+    // Clolumn 1: 8 coins
+    // Clolumn 1: 12 coins
+    // Clolumn 1: 15 coins
+    var arrCoinsColumns = [5,8,12,15];
+
+    var TotalCoin = arrCoinsColumns.reduce((total, num) =>  total + num);
+
+
+    // User total coins
+    var userCoinAmount = 0;
+	
+    // Profile coin image to show on stack or heap (Laying coin image)
+    var coinElementString = '<img class="coinImageProfile" src="images/CoinProfile.png" width="50" />';
+    
+    
+    // Buttons add and remove
+    $btnAdd = jQuery(".btnAdd");
+    $btnRemove = jQuery(".btnRemove");
+
+    // Clickable Containers for add and remove coin
+    $heapContainer = jQuery(".heapContainer");
+    $stackContainer = jQuery(".stackContainer");
+
+
+
+    // Set Text
+    function setUserCoinAmountText(){
+        // jQuery("#userCoinAmountText").text(userCoinAmount*.25)
+        jQuery("#userCoinAmountText").text(Number(userCoinAmount*.25).toFixed(2))
+        //Qualtrics.SurveyEngine.setEmbeddedData('TAKEN', userCoinAmount*.25);
+
+
+    }
+
+
+    // Get column available coins (for heap and stack)
+    function getColumnNumber(){
+        var i;
+        var iSum = 0;
+        for(i=0; i<arrCoinsColumns.length ;i++)
+        {
+            iSum += arrCoinsColumns[i];
+            if(userCoinAmount < iSum)
+                return i+1;
+        }
+        return 1; //  in case of failure. Code should not reach here
+    }
+    
+
+
+    // Add Coin
+    // ---------------------------
+    function AddCoin(){
+        if(userCoinAmount >= TotalCoin) {
+            alert('You have reached the maximum money allowed!');
+            return; 
+        }
+
+        var iIndex = getColumnNumber();
+        var heap = jQuery("#heapCoins" + iIndex);
+        var stack = jQuery("#stackCoins" + iIndex);
+
+        userCoinAmount++;
+        setUserCoinAmountText();
+
+        CoinAnimation(heap, stack);
+    }
+
+
+    // Remove Coin
+    // ---------------------------
+    function RemoveCoin(){
+        if(userCoinAmount <= 0) return;
+        
+        userCoinAmount--;
+        setUserCoinAmountText();
+
+        var iIndex = getColumnNumber();
+        var heap = jQuery("#heapCoins" + iIndex);
+        var stack = jQuery("#stackCoins" + iIndex);
+
+        CoinAnimation(stack, heap);
+    }
+
+
+    // Animation
+    // -----------------------------------
+    function CoinAnimation(oHeap, oStack){
+        
+        var heap = $(oHeap);
+        var stack = $(oStack);
+
+
+        // #################################################
+        // CHANGE OFFSET TO POSITION IF NOT WORKING !!!!!!!!
+        // #################################################
+
+        // Coin from Position (heap column)
+        var offsetTopFrom = heap.offset().top - 60;
+        var offsetLeftFrom = heap.offset().left - 20;
+        
+        // console.log(stack.position().left, stack[0].id)
+        
+        // Coin To Position (stack column)
+        var offsetTopTo = stack.offset().top -60;
+        var offsetLeftTo = stack.offset().left ;
+        
+        // if from column not empty then: Position from coin top of column 
+        if(jQuery("#" + heap[0].id + "  > img:first-child").length > 0)
+        {
+            $imgtoCoin =jQuery( "#" + heap[0].id + " > img:first-child");
+            offsetTopFrom = $imgtoCoin.offset().top - 63;
+            offsetLeftFrom = $imgtoCoin.offset().left;
+        }
+
+
+        if(jQuery("#" + stack[0].id + "  > img:first-child").length > 0)
+        {
+            $imgtoCoin = jQuery( "#" + stack[0].id + " > img:first-child");
+            offsetTopTo = $imgtoCoin.offset().top - 68;
+            offsetLeftTo = $imgtoCoin.offset().left;
+        }
+        
+
+        // Remove from heap the coing befor flying
+        if(jQuery("#" + heap[0].id + "  > img:first-child").length > 0)
+        {
+            jQuery("#" + heap[0].id + "  > img:first-child").remove()
+        }
+
+        // Flying coin
+        var $coin = jQuery('<div class="flyingCoin">')
+            .insertAfter(heap)
+            .css({
+                "top": offsetTopFrom, 
+                "left": offsetLeftFrom, 
+            })
+            .animate({
+                "top":  offsetTopTo,
+                "left": offsetLeftTo
+            }, 1300, function() {
+                $coin.remove();
+                
+                    $img =jQuery(coinElementString)
+                    stack.append($img);
+            });
+    }
+
+
+
+    // Initialization coin in heap as starting point
+    function initCoinAnimation()
+    {
+        
+        // console.log('initCoinAnimation.......');
+
+        var i,j;
+
+        for(i=0;i<arrCoinsColumns.length;i++){
+
+            $heapCoin = jQuery("#heapCoins" + (i+1));
+
+            for(j=0;j<arrCoinsColumns[i];j++){
+                        $img =jQuery(coinElementString)
+                            $heapCoin.append($img );
+            }
+        }
+    }
+
+
+
+	
+    // Document on load
+    // =====================================================
+    $heapContainer.on("click", function(){
+        AddCoin();    
+    });
+
+    $stackContainer.on("click", function(){
+        RemoveCoin();
+    });
+
+
+    $btnAdd.on("click", function(){
+        AddCoin();    
+    });
+
+    $btnRemove.on("click", function(){
+        RemoveCoin();
+    });
+
+
+
+    initCoinAnimation();
+
+
+    </script>
+</body>
+</html>
